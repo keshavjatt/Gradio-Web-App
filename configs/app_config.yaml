@@ -1,0 +1,46 @@
+app:
+  title: "Multi-Task Gradio Web App"
+  theme: "soft"
+  live: true
+  
+models:
+  device: "cpu"
+  progressive_loading: true
+
+  image_generation:
+    enabled: true
+    model: "OFA-Sys/small-stable-diffusion-v0"
+    use_safety_checker: false
+    num_inference_steps: 15
+    guidance_scale: 7.0
+    
+  summarization:
+    enabled: true
+    model: "Falconsai/text_summarization"
+    
+  sentiment_analysis:
+    enabled: true
+    model: "cardiffnlp/twitter-roberta-base-sentiment-latest"
+    
+  next_word_prediction:
+    enabled: true
+    model: "distilgpt2"
+    
+  translation:
+    enabled: true
+    model: "Helsinki-NLP/opus-mt-en-fr"
+    
+  ner:
+    enabled: true
+    model: "dslim/bert-base-NER"
+
+optimization:
+  use_attention_slicing: true
+  use_memory_efficient_attention: false
+  torch_compile: false
+  model_offload: true
+
+limits:
+  max_text_length: 1000
+  max_summary_length: 150
+  max_new_tokens: 50
